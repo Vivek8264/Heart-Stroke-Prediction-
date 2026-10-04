@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Risk Prediction System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            color: #444;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #4facfe;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #2f8cff;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>❤️ Health Risk Prediction</h1>
+
+    <form action="/predict" method="post">
+
+        <h2>Basic Details</h2>
+
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" name="age" required>
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <select name="gender">
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Hypertension</label>
+            <select name="hypertension">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Heart Disease</label>
+            <select name="heart_disease">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>BMI</label>
+            <input type="number" step="0.1" name="bmi" required>
+        </div>
+
+        <div class="form-group">
+            <label>Average Glucose Level</label>
+            <input type="number" step="0.1" name="avg_glucose" required>
+        </div>
+
+        <div class="form-group">
+            <label>Smoking Status</label>
+            <select name="smoking">
+                <option>never</option>
+                <option>formerly</option>
+                <option>smokes</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Work Type</label>
+            <select name="work">
+                <option>Private</option>
+                <option>Govt</option>
+                <option>self-employed</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Marital Status</label>
+            <select name="married">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+
+        <h2>Heart Attack Related Details</h2>
+
+        <div class="form-group">
+            <label>Stress Feeling</label>
+            <select name="stress">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Anger Issues</label>
+            <select name="anger">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Systolic BP</label>
+            <input type="number" name="bp_sys" required>
+        </div>
+
+        <div class="form-group">
+            <label>Diastolic BP</label>
+            <input type="number" name="bp_dia" required>
+        </div>
+
+        <div class="form-group">
+            <label>Blood Sugar</label>
+            <input type="number" name="blood_sugar" required>
+        </div>
+
+        <div class="form-group">
+            <label>Cholesterol</label>
+            <input type="number" name="cholesterol" required>
+        </div>
+
+        <div class="form-group">
+            <label>Heart Rate</label>
+            <input type="number" name="heart_rate" required>
+        </div>
+
+        <div class="form-group">
+            <label>Family History</label>
+            <select name="family_history">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Mental Health Issues</label>
+            <select name="mental_health">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Chest Pain</label>
+            <select name="chest_pain">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Shortness of Breath</label>
+            <select name="breath_short">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Cold Sweat</label>
+            <select name="cold_sweat">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Nausea/Dizziness</label>
+            <select name="nausea">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <button class="btn" type="submit">🔍 Predict Risk</button>
+
+    </form>
+</div>
+
+</body>
+</html>
